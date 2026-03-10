@@ -1,0 +1,29 @@
+{
+  "343032135": {
+    "text": "Deposit/transfer to your account\nX2377 +",
+    "amount_min": 3000.0,
+    "amount_max": 10000.0,
+    "currency": "THB",
+    "frequency": 2,
+    "time1": {
+      "type": "range",
+      "start": "12:00",
+      "end": "23:00"
+    },
+    "time2": {
+      "type": "range",
+      "start": "12:00",
+      "end": "23:30"
+    },
+    "active": true,
+    "sent_today": [
+      "12:40",
+      "15:25"
+    ],
+    "sent_date": "2026-03-10",
+    "scheduled_times_today": [],
+    "scheduled_date": "2026-03-10",
+    "last_sent_date": "2026-03-10",
+    "next_send_date": "2026-03-12"
+  }
+}
