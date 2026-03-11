@@ -487,6 +487,9 @@ async def schedule_notifications(app: Application):
                 next_send_date = settings.get("next_send_date")
                 if next_send_date and today_str < next_send_date:
                     continue
+                # Сбрасываем next_send_date если сегодня уже можно слать
+                if next_send_date and today_str >= next_send_date:
+                    settings["next_send_date"] = None
 
                 if settings.get("sent_date") != today_str:
                     settings["sent_today"] = []
