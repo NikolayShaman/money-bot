@@ -61,7 +61,7 @@ def format_amount(amount, currency):
     sym = CURRENCIES.get(currency, currency)
     if currency == "USD":
         return f"{sym}{amount:,.2f}"
-    return f"{round(amount):,} {sym}".replace(",", " ")
+    return f"{round(amount):,} {sym}"
 
 def generate_notification(settings):
     amount = random.uniform(float(settings.get("amount_min", 1000)), float(settings.get("amount_max", 10000)))
@@ -69,13 +69,8 @@ def generate_notification(settings):
     if currency == "RUB": amount = round(amount / 100) * 100
     elif currency == "USD": amount = round(amount, 2)
     elif currency == "THB": amount = round(amount / 50) * 50
-    now = get_user_now(settings).strftime("%d.%m.%Y %H:%M")
-    return (
-        f"💰 *Поступление средств*\n\n"
-        f"📋 {settings.get('text', 'Поступление')}\n"
-        f"💵 Сумма: *{format_amount(amount, currency)}*\n"
-        f"🕐 {now}\n\n✅ Средства зачислены на ваш счёт"
-    )
+    text = settings.get("text", "Поступление")
+    return f"{text} {format_amount(amount, currency)}"
 
 def get_random_time(start, end):
     h1, m1 = map(int, start.split(":"))
